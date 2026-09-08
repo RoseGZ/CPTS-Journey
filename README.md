@@ -1,5 +1,5 @@
-# Junior-Cybersecurity-Analyst-Path-Notes
-Notes and reflections from my journey through the Junior Cybersecurity Analyst path, documenting key concepts, hands-on practice, and learning progress.
+# CPTS-Journey
+Daily notes and reflections from my journey through HTB Academy's Penetration Tester path toward the CPTS (Certified Penetration Testing Specialist) certification.
 
 ## How this journal works
 

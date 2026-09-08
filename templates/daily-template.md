@@ -1,6 +1,6 @@
 ---
 date: {{date:YYYY-MM-DD}}
-tags: [htb, cpts, journal]
+tags: [htb, cpts, pentest-path, journal]
 ---
 
 # {{date:dddd, MMMM D}}
