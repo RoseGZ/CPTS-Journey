@@ -1,0 +1,10 @@
+# OS junk
+.DS_Store
+
+# Obsidian local/device-specific state (not useful to publish, differs per machine)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.trash/
+
+# Obsidian Git plugin internals
+.obsidian/plugins/obsidian-git/*.log
