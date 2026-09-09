@@ -8,3 +8,8 @@
 
 # Obsidian Git plugin internals
 .obsidian/plugins/obsidian-git/*.log
+
+# Local tooling — kept private, not published
+.obsidian/
+.githooks/
+templates/

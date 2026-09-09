@@ -3,10 +3,6 @@ Daily notes and reflections from my journey through HTB Academy's Penetration Te
 
 ## How this journal works
 
-- Written day-to-day in Obsidian, one note per day in `journal/`, from the template in `templates/daily-template.md`.
-- A pre-commit hook (`.githooks/`) does a lightweight scan of staged notes for obvious secrets, internal IPs, or identifiers before anything is committed, as a safety net. On a fresh clone, enable it once with:
-  ```
-  git config core.hooksPath .githooks
-  ```
+Written day-to-day in Obsidian and synced automatically. The Obsidian setup, templates, and a local pre-commit safety check are kept private and aren't part of this repo — what's published here is just the actual journal entries (`journal/`) and topic notes (`notes/`).
 
 

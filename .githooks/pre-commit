@@ -1,5 +1,0 @@
-#!/bin/bash
-# Safety-net scan before a commit lands in this PUBLIC journal repo.
-# Blocks the commit if something risky is staged. Bypass (only if you're
-# sure it's a false positive) with: git commit --no-verify
-exec python3 "$(git rev-parse --show-toplevel)/.githooks/scan_staged.py"
