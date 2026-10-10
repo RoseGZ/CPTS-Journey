@@ -52,3 +52,39 @@ echo "10.129.x.x  target.htb" | sudo tee -a /etc/hosts
 - **Infrastructure mapping** – NS records hint at the hosting provider; names like `loadbalancer.` or `vpn.` reveal architecture and entry points.
 - **Change monitoring** – new subdomains = new attack surface.
 - **TXT records leak tooling** – verification tokens (e.g. `_1password=...`) reveal SaaS in use → useful for phishing/social engineering.
+
+---
+
+# Digging DNS
+
+## Tools
+| Tool | Use it for |
+|---|---|
+| **dig** | Go-to manual tool – any record type, detailed output, zone transfers |
+| **nslookup** / **host** | Quick, simple A/AAAA/MX checks |
+| **dnsenum** | Automated enum – subdomain brute-force, zone transfers |
+| **fierce** | Subdomain enum with recursive search + **wildcard detection** |
+| **dnsrecon** | All-in-one DNS enum, multiple output formats |
+| **theHarvester** | OSINT – emails, employees, subdomains from many sources |
+
+## dig cheat sheet
+```bash
+dig domain.com                 # default = A record
+dig domain.com MX|NS|TXT|SOA|AAAA|CNAME
+dig @1.1.1.1 domain.com        # query a specific name server
+dig +trace domain.com          # full resolution path (root → TLD → auth)
+dig -x 192.0.2.1           # reverse lookup (PTR) – may need @server
+dig +short domain.com          # just the answer
+dig +noall +answer domain.com  # only the answer section
+dig domain.com ANY             # all records – often ignored (RFC 8482)
+```
+
+> ⚠️ Heavy querying can get detected/blocked – respect rate limits and scope.
+
+## Reading dig output
+- **Header** – `status: NOERROR` = success (`NXDOMAIN` = doesn't exist). Flags: `qr` response, `rd` recursion desired, `ad` authentic data. Counts of question/answer/authority/additional entries.
+- `WARNING: recursion requested but not available` → server won't recurse for you.
+- **Question** – what was asked (`google.com. IN A`).
+- **Answer** – `name  TTL  IN  type  value` – TTL = seconds it can be cached.
+- **Footer** – query time, which server answered (`IP#53`, UDP), timestamp, size.
+- **OPT pseudosection** may appear → EDNS (bigger messages, DNSSEC).
